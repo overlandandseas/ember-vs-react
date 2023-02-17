@@ -1,5 +1,5 @@
 dev: 
-	make -j watch
+	make -j2 watch
 
 watch: tar1 tar2
 

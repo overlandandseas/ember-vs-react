@@ -2,7 +2,7 @@
 title: "Looping Through Content"
 date: 2022-12-11T10:23:14-06:00
 draft: false
-weight: 1
+weight: 3
 ---
 
 ## Rendering lists
