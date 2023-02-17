@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Ember Vs React</title>
+  <link rel="stylesheet" href="/main.css" />
+  <script type="text/javascript">
+  function updateTheme() {
+      if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark')
+      } else {
+        document.documentElement.classList.remove('dark')
+      }
+    }
+    updateTheme()
+  </script>
+</head>
+
+<body class="bg-zinc-200 dark:bg-zinc-800 transition duration-200">
+
+    <header
+      class=
+        "flex flex-wrap items-center justify-between
+        px-2 py-3 transition duration-500 dark:shadow-none lg:px-4
+        border-b border-gray-300 dark:border-gray-700
+        backdrop-blur-sm dark:backdrop-blur bg-white/[var(--bg-opacity-light)] dark:bg-zinc-900/[var(--bg-opacity-dark)]"
+    >
+      <div lass="relative flex flex-grow basis-0 items-center">
+        <a href="/" aria-label="Home page" class="hover:opacity-50 transition duration-200">
+          <div class="my-0 flex font-serif items-center space-x-2">
+          <svg width="25" height="25" xmlns="http://www.w3.org/2000/svg" class="dark:hidden">
+            <image href="/svg/ember-e-rounded-icon-1c-on-light-bg.svg" height="25" width="25" />
+          </svg>
+          <svg width="25" height="25" xmlns="http://www.w3.org/2000/svg" class="hidden dark:inline">
+            <image href="/svg/ember-e-rounded-icon-1c-on-dark-bg.svg" height="25" width="25" />
+          </svg>
+            <h3 class="pl-1 dark:text-zinc-300">Vs.</h3>
+            <svg width="25" height="25" xmlns="http://www.w3.org/2000/svg" class="dark:hidden">
+              <image href="/svg/logo-react-svgrepo-com.svg" height="25" width="25" />
+            </svg>
+            <svg width="25" height="25" xmlns="http://www.w3.org/2000/svg" class="hidden dark:inline">
+              <image href="/svg/logo-react-svgrepo-com-white.svg" height="25" width="25" />
+            </svg>
+          </div>
+        </a>
+      </div>
+
+        <div>
+          <label for="search" class="block text-sm font-medium text-gray-700 hidden">Quick search</label>
+          <div class="relative flex items-center w-96">
+            <input type="text" name="search" id="search" 
+            placeholder="Quick Search"
+            class="bg-zinc-100/50 dark:bg-zinc-900/50 block w-full rounded-md border-gray-400/90 dark:border-gray-700 pr-12 shadow-sm 
+            focus:border-zinc-500 focus:ring-zinc-500 sm:text-sm text-gray-500">
+            <div class="absolute inset-y-0 right-0 flex py-1.5 pr-1.5">
+              <kbd class="inline-flex items-center rounded border border-gray-300 dark:border-gray-700 px-2 font-sans text-sm font-medium text-gray-400">⌘K</kbd>
+            </div>
+          </div>
+        </div>
+              
+      <div class="w-48">
+        <div>
+          <label for="theme" class="block text-sm font-medium text-gray-700 hidden">Theme</label>
+          <select id="theme" name="location" class="block w-full rounded-md border-gray-400/90 dark:border-gray-700 
+          pr-10 text-base focus:border-zinc-500 focus:outline-none focus:ring-zinc-500 sm:text-sm text-gray-500
+          bg-zinc-100/50 dark:bg-zinc-900">
+            <option value="system">System Default</option>
+            <option value="light">Light Mode</option>
+            <option value="dark">Dark Mode</option>
+          </select>
+        </div>
+      </div>
+    </header>
+    {% block content %} {% endblock %}
+    <script type="text/javascript">
+      
+      const select = document.getElementById('theme');
+      if ('theme' in localStorage) {
+      console.log('found default', localStorage.theme)
+        select.value = localStorage.theme
+      } else {
+        select.value = 'system'
+      }
+      select.addEventListener('change', evt => {
+        console.log('changing to', evt.target.value)
+        if (evt.target.value === 'system') {
+          localStorage.removeItem('theme');
+        } else {
+          localStorage.theme = evt.target.value;
+        }
+        updateTheme();
+      });
+    </script>
+</body>
+
+</html>

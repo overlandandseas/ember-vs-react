@@ -1,0 +1,26 @@
+<nav class="text-base lg:text-sm w-64 pr-8 xl:w-72 xl:pr-16">
+<ul role="list" class="space-y-9">
+  {% for page in section.pages %}
+    <li key="{{page.title}}">
+      <h2 class="font-display font-medium text-zinc-900 dark:text-white">
+      <a href="{{page.permalink}}" class="hover:text-zinc-600 dark:hover:text-zinc-300">
+        {{page.title}}
+      </a>
+      </h2>
+      <ul role="list" class="mt-2 space-y-2 border-l-2 border-zinc-300
+      dark:border-zinc-700 lg:mt-4 lg:space-y-4 lg:border-zinc-300" >
+        {% for toc in page.toc%}
+        <li class="relative">
+        <a href="{{toc.permalink}}" class="block w-full pl-3.5 before:pointer-events-none before:absolute before:-left-1 
+        before:top-1/2 before:h-1.5 before:w-1.5 before:-tranzinc-y-1/2 before:rounded-full
+        text-zinc-500 before:hidden before:bg-zinc-300 hover:text-zinc-600 hover:before:block
+        dark:text-zinc-400 dark:before:bg-zinc-700 dark:hover:text-zinc-300">
+        {{ toc.title }}
+        <a/>
+        </li>
+        {% endfor %}
+      </ul>
+    </li>
+  {% endfor %}
+</ul>
+</nav>

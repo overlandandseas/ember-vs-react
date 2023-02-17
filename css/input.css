@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.ember pre {
+  border-bottom: solid #E04E39 3px;
+}
+
+.react pre {
+  border-bottom: solid #61dbfb 3px;
+}
+
+.text-react {
+  color: #61dbfb
+}

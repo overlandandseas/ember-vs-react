@@ -1,3 +1,6 @@
+dev: 
+	make -j watch
+
 watch: tar1 tar2
 
 tar1:
@@ -9,6 +12,6 @@ tar2:
 build: tar3
 
 tar3:
-	npx tailwindcss -i ./css/input.css -o ./static/main.css
+	npx tailwindcss -i ./css/input.css -o ./static/main.css --minify
 	zola build
 	
