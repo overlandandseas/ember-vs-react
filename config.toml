@@ -1,5 +1,5 @@
 # The URL the site will be built for
-base_url = "https://embervsreact.dv"
+base_url = "https://main--incomparable-cocada-7e53c8.netlify.app"
 
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = false
