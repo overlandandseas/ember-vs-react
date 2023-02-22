@@ -6,7 +6,7 @@ weight: 1
 categories: component
 ---
 
-### Using a component in a file
+## Component Usage
 
 In ember, all components are in a global namespace, we do not need to import then at all,
 this is different from React that requires the Component to be imported like a library or module.
@@ -32,21 +32,17 @@ Rendering the component is similar to ember octanes angle bracket syntax.
 // import component like js module
 import MyComponent from './components/MyComponent';
 
-
-function App() {
-
-// return statement is where template in tsx syntax is located
+export default function App() {
   return (
     <MyComponent />
   )
 }
-export default App
 ```
 
 </div>
 </div>
 
-### Block components
+## Block components
 
 Block components are done in a similar way between React and Ember. 
 In React there a reserve parameter `children` that contains the contents of the inner html elements.
@@ -61,7 +57,9 @@ In React there a reserve parameter `children` that contains the contents of the 
 <InnerComponent>
   <p> Inner Content is rendered here </p>
 </InnerComponent>
-
+```
+  
+```hbs
 <!-- inner-component.hbs -->
 <div>
  {{outlet}}
@@ -83,7 +81,9 @@ export default function OuterComponent() {
     </InnerComponent>
   )
 }
-
+```
+  
+```tsx
 // InnerComponent.tsx
 export default function InnerComponent({ childen }) {
   return (
@@ -95,10 +95,10 @@ export default function InnerComponent({ childen }) {
 </div>
 </div>
 
-### Passing and using named arguments
+## Component Arguments
 
 Passing arguments is done through element attributes in React and Ember.
-In react arguments, otherwise known as **props**, 
+React arguments, otherwise known as **props**, 
 are passed into the function component via the field name of the first parameter.
 
 <div class="lg:flex justify-around lg:space-x-4">
@@ -137,3 +137,27 @@ export default function InnerComponent({ name }) {
 
 </div>
 </div>
+
+### Multi-component Files
+Since React doesn't scope things by file, but by functions using js imports, we can create multiple components in one file.
+This can be used to create *private* components that can only be used by the ones we export.
+*This is not possible in Ember.*
+
+#### React
+```tsx
+// MyComponent.tsx
+export default function MyComponent({ message }) {
+  return (<>
+    <p>{message.body}</p>
+    <FormattedDate date={mesage.date} />
+  </>)
+}
+
+function FormattedDate({ date }) {
+  const formatted = date.toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"});
+  return (<aside>{formatted}</aside>)
+}
+
+```
+
+The component `FormatttedDate` cannot be used outside of this file since it is never exported.

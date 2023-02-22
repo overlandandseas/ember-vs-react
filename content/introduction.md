@@ -16,23 +16,21 @@ When starting a new poject in ember we can use the ember cli tool. In react ther
 For this we can use **Vite**, a bundler that includes a lot of the same tools the ember cli does: dev server, 
 auto reloading, bundler and compiler/build tool.
 
-
-<div class="lg:flex justify-around lg:space-x-8">
-<div class="lg:w-1/2 ember">
+{% sidebyside() %}
+<div>
 
 #### Ember
 ```bash
 ember new project-name --lang en
 ```
-</div>
-<div class="lg:w-1/2 react">
+</div><div>
 
 #### React
 ```bash
 npm create vite@latest project-name -- --template react-ts
 ```
 </div>
-</div>
+{% end %}
 
 ### Dev server
 
@@ -48,9 +46,8 @@ npm run dev
 In ember, we use the ember-cli to use generate new component and other entities.
 React by default doesn't have a generator or a cli tool, we can create the files manually.
 
-<div class="lg:flex justify-around lg:space-x-8">
-
-<div class="lg:w-1/2 ember">
+{% sidebyside() %}
+<div>
 
 #### Ember
 ```bash
@@ -59,7 +56,7 @@ ember generate component my-component
 ```
 
 </div>
-<div class="lg:w-1/2 react">
+<div>
 
 #### React
 ```bash
@@ -67,16 +64,16 @@ ember generate component my-component
 touch src/components/MyComponent.tsx
 ```
 </div>
-</div>
+{% end %}
 
 ## Directory structre
 
 In ember, we have two files to represent a component: the js file and hbs file. 
 If not using **pods** then we have two files co-located in the same location.
 React has one file per component _(jsx)_.
-<div class="lg:flex justify-around lg:space-x-8">
-<div class="lg:w-1/2 ember">
 
+{% sidebyside() %}
+<div>
 
 #### Ember
 ```bash
@@ -85,9 +82,7 @@ app/
     my-component.hbs
     my-component.js
 ```
-</div>
-
-<div class="lg:w-1/2 react">
+</div><div>
 
 #### React
 ```bash
@@ -98,6 +93,6 @@ src/
 ```
 
 </div>
-</div>
+{% end %}
 
 

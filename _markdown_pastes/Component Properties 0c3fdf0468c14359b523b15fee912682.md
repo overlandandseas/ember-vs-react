@@ -6,11 +6,9 @@ weight: 4
 ---
 
 ## Declaring a local property
+
 Since JSX is both javascript and template in one file, we do not need to create a separate file to manage properties.
 In React a property in a component is a variable that's been initialized inside the component function body.
-
-{% sidebyside() %}
-<div>
 
 #### Ember
 
@@ -28,7 +26,6 @@ export default class MyComponent extends Component {
 <p>Value: {{this.value}}</p>
 
 ```
-</div><div>
 
 #### React
 
@@ -40,8 +37,6 @@ export default function MyComponent() {
 }
 
 ```
-</div>
-{% end %}
 
 This is where we start to see the benefits of Jsx since everything about one component is stored in one file.
 
@@ -50,12 +45,9 @@ This is where we start to see the benefits of Jsx since everything about one com
 In Ember, we define actions in component files using the `@action` decorator, in React there is no need, all functions can be considered actions.
 Calling the function is similar, we assign it via attributes.
 
-{% sidebyside() %}
-<div>
+### Ember
 
-#### Ember
-
-```js
+```
 // my-component.js
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
@@ -69,18 +61,16 @@ export default class MyComponent extends Component {
 
 ```
 
-```hbs
-{!-- my-component.hbs -}}
+```
 <button type="button" {{on "click" this.log}}>
   Log
 </button>
 
 ```
-</div><div>
 
-#### React
+### React
 
-```tsx
+```
 // MyComponent.tsx
 export default function MyComponent() {
   const log = () => console.log('Log called');
@@ -93,8 +83,6 @@ export default function MyComponent() {
 }
 
 ```
-</div>
-{% end %}
 
 ## Updating the state of a local property
 
@@ -103,12 +91,9 @@ similar to the `@tracked` attribute.
 
 For this example, we will use the `useState` hook to keep track of our local state.
 
-{% sidebyside() %}
-<div>
+### Ember
 
-#### Ember
-
-```js
+```
 // my-component.js
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
@@ -124,7 +109,7 @@ export default class MyComponent extends Component {
 
 ```
 
-```hbs
+```
 {{!-- my-component.hbs --}}
 <p>Count: {{this.count}}</p>
 <p>
@@ -134,11 +119,10 @@ export default class MyComponent extends Component {
 </p>
 
 ```
-</div><div>
 
-#### React
+### React
 
-```tsx
+```
 // MyComponent.jsx
 import { useState } from "react";
 
@@ -159,19 +143,14 @@ export default function MyComponent() {
 }
 
 ```
-</div>
-{% end %}
 
 ### Computed Get Method
 
 In Ember, we use native javascript `get` combined with the `@computed` decorator to 
 
-{% sidebyside() %}
-<div>
-
 #### Ember
 
-```js
+```jsx
 // my-component.js
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
@@ -179,22 +158,21 @@ import { computed, set } from '@ember/object';
 
 export default class MyComponent extends Component {
 
-  @computed('args.firstName', 'args.lastName')
+	@computed('args.firstName', 'args.lastName')
   get fullName() {
     return `${this.args.firstName} ${this.args.lastName}`;
   }
 }
 ```
 
-```hbs
+```jsx
 {{!-- my-component.hbs --}}
 <p>{{this.fullName}}</p>
 ```
-</div><div>
 
 #### React
 
-```tsx
+```jsx
 // MyComponent.jsx
 export default function MyComponent({ firstName, lastName }) {
 	const fullName = `${firstName} ${lastName}`;
@@ -202,8 +180,5 @@ export default function MyComponent({ firstName, lastName }) {
 	return (<p>{fullName}</p>)
 }
 ```
-</div>
-{% end %}
 
-React will re-render the entire component each time a parameter is changed, this is good for simplicity, 
-however, this means we should keep components pure.
+React will re-render the entire component each time a parameter is changed, this is good for simplicity, however, this means we should keep components pure, [this doc on “Keeping Components Pure”](https://beta.reactjs.org/learn/keeping-components-pure) is a good reference to the intentions of React components.
