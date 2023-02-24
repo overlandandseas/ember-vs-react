@@ -51,6 +51,7 @@ export default class TasksService extends Service {
 
 #### React Context
 ```tsx
+// TasksContext.jsx
 import { createContext, useContext, useReducer } from 'react';
 
 const TasksContext = createContext(null);
