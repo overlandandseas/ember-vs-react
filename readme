@@ -1,7 +1,7 @@
 Website code for embervsreact.dev
 
 Requirements to run:
-	cmake
+	make
 	zola
 	tailwindcss
 		@tailwindcss/typography
