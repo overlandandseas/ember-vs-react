@@ -1,26 +1,62 @@
-<nav class="text-base lg:text-sm w-64 pr-8 xl:w-72 xl:pr-16 hidden md:block">
-<ul role="list" class="space-y-9">
-  {% for page in section.pages %}
+<div class="flex justify-end float-right xl:hidden dark:text-white">
+  <button role="button" id="nav-arrow" class="transition-transform duration-300">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+      class="w-6 h-6">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
+    </svg>
+  </button>
+</div>
+<nav class="text-base text-sm w-64 pr-8 xl:w-72 xl:pr-16 transition-all duration-300 xl:translate-x-0 xl:w-auto"
+  id="side-nav">
+  <ul role="list" class="space-y-9">
+    {% for page in section.pages %}
     <li key="{{page.title}}">
       <h2 class="font-display font-medium text-zinc-900 dark:text-white">
-      <a href="{{page.permalink}}" class="hover:text-zinc-600 dark:hover:text-zinc-300">
-        {{page.title}}
-      </a>
+        <a href="{{page.permalink}}" class="hover:text-zinc-600 dark:hover:text-zinc-300">
+          {{page.title}}
+        </a>
       </h2>
       <ul role="list" class="mt-2 space-y-2 border-l-2 border-zinc-300
-      dark:border-zinc-700 lg:mt-4 lg:space-y-4 lg:border-zinc-300" >
+      dark:border-zinc-700 lg:mt-4 lg:space-y-4 lg:border-zinc-300">
         {% for toc in page.toc%}
         <li class="relative">
-        <a href="{{toc.permalink}}" class="block w-full pl-3.5 before:pointer-events-none before:absolute before:-left-1 
+          <a href="{{toc.permalink}}" class="block w-full pl-3.5 before:pointer-events-none before:absolute before:-left-1 
         before:top-1/2 before:h-1.5 before:w-1.5 before:-tranzinc-y-1/2 before:rounded-full
         text-zinc-500 before:hidden before:bg-zinc-300 hover:text-zinc-600 hover:before:block
         dark:text-zinc-400 dark:before:bg-zinc-700 dark:hover:text-zinc-300">
-        {{ toc.title }}
-        <a/>
+            {{ toc.title }}
+          </a>
         </li>
         {% endfor %}
       </ul>
     </li>
-  {% endfor %}
-</ul>
+    {% endfor %}
+  </ul>
 </nav>
+
+<script>
+  const sideNav = document.getElementById('side-nav');
+  const arrow = document.getElementById('nav-arrow');
+
+  if (localStorage.getItem('nav-collapsed') === "true") {
+    installClasses();
+  }
+
+
+  arrow.addEventListener('click', evt => {
+    evt.preventDefault();
+    installClasses();
+    toggleLocalStorage();
+  });
+
+  function toggleLocalStorage() {
+    localStorage.setItem('nav-collapsed', !(localStorage.getItem('nav-collapsed') === "true"));
+  }
+
+  function installClasses() {
+    sideNav.classList.toggle('-translate-x-72');
+    sideNav.classList.toggle('w-0');
+    sideNav.classList.toggle('w-64');
+    arrow.classList.toggle('rotate-180');
+  }
+</script>

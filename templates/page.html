@@ -3,13 +3,11 @@
 {% set section = get_section(path="_index.md") %}
 
 
-<div class="relative mx-auto flex max-w-screen-2xl justify-center sm:px-2 lg:px-8 xl:px-12">
-  <div class="lg:relative lg:block lg:flex-none">
-    <div class="py-16 pl-0.5">
+<div class="relative mx-auto flex justify-center sm:px-2 lg:px-8 xl:px-12">
+	<div class="lg:relative lg:block lg:flex-none py-16">
 		{% include "nav.html" %}
-		</div>
 	</div>
-  <div class="min-w-0 max-w-2xl flex-auto px-4 py-16 lg:max-w-none lg:pr-8 lg:pl-8 xl:px-16">
+	<div class="min-w-0 max-w-2xl flex-auto px-4 py-16 lg:max-w-none lg:pr-8 lg:pl-8 xl:px-16">
 		<article>
 			<header class="space-y-1">
 				<p class="font-display text-sm font-medium text-zinc-500">
@@ -27,12 +25,11 @@
 			prose-pre:rounded-md prose-pre:bg-zinc-900 prose-pre:shadow-lg 
 			dark:prose-pre:bg-zinc-800/60 dark:prose-pre:shadow-none dark:prose-pre:ring-1
 			dark:prose-pre:ring-zinc-300/10
-			dark:prose-hr:border-zinc-800" >
-			{{ page.content | safe }}
+			dark:prose-hr:border-zinc-800">
+				{{ page.content | safe }}
 			</div>
 		</article>
 		{% include "pagination.html" %}
 	</div>
 </div>
 {% endblock content %}
-

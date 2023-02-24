@@ -205,5 +205,6 @@ export default function MyComponent({ firstName, lastName }) {
 </div>
 {% end %}
 
-React will re-render the entire component each time a parameter is changed, this is good for simplicity, 
-however, this means we should keep components pure.
+React will re-render the entire component each time a parameter is changed, this is good for simplicity.
+The React docs have a section on [Keeping Components Pure](https://beta.reactjs.org/learn/keeping-components-pure),
+this is a good resource to learn about how React handles updates.
