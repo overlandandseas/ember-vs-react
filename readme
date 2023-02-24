@@ -1,0 +1,17 @@
+Website code for embervsreact.dev
+
+Requirements to run:
+	cmake
+	zola
+	tailwindcss
+		@tailwindcss/typography
+		@tailwindcss/forms
+
+Commands:
+	make dev
+		runs development server with tailwind process
+	make build
+		builds tailwindcss files, then zola build
+	zola build
+		builds html portion of website (no styles)
+
