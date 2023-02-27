@@ -146,7 +146,7 @@ export default function MyComponent({ messages }) {
   return (
     <>
       {messages.map(msg => (
-        <Message message={msg} />
+        <Message key={msg} message={msg} />
       ))}
     </>
   );
@@ -182,7 +182,7 @@ import Message from "./components/Message";
 export default function MyComponent({ messages }) {
   const messageElements = messages
     .filter(x => x.unread)
-    .map(msg => <Message message={msg} />);
+    .map(msg => <Message key={msg} message={msg} />);
 
   return (<>
     {messageElements}
