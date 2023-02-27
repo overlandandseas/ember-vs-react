@@ -25,13 +25,7 @@ In **jsx** there is no **if** helper by default, we need to use javascript code 
 export default function MyComponent({ isOldEnough }) {
 
   // a local variable may also be utilized to reduce clutter
-  if (isOldEnough) {
-    return (<p>show content</p>)
-  
-  } else {
-    return (<p>not old enough</p>)
-
-  }
+  return {isOldEnough ? <p>show content</p> : <p>not old enough</p> }
 }
 ```
 </div>
@@ -75,7 +69,7 @@ export default function MyComponent({ authenticated }) {
 
 
 However in react we can create a **if** block component to be comparable to the `{{if}}` helper in ember.
-> This is not recommended since it will render the both branch components reguardless of conditional value.
+> This is not recommended since it will render the both branch components regardless of conditional value.
 
 
 #### React
